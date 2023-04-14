@@ -50,7 +50,7 @@ img = np.frombuffer(img, np.uint8)
 img = cv2.imdecode(img, 3)
 height, width, layers = img.shape
 size = (width,height)
-out = out = cv2.VideoWriter('project.avi',cv2.VideoWriter_fourcc(*'DIVX'), 24, size)
+out = out = cv2.VideoWriter('project.avi',cv2.VideoWriter_fourcc(*'DIVX'), 30, size)
 
 for i in range(len(images_arr)):
     img = images_arr[i]
