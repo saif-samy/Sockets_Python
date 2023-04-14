@@ -49,10 +49,5 @@ def sendVideo():
 
 while True:
     clientSocket, clientAddress = server.accept()
-    # Send Image
-    # print(f'[CLIENT] connected to {clientAddress}')
-    # img = cv2.imread('panther.jpg')
-    # img_str = cv2.imencode('.jpeg', img)[1].tobytes()
-    # send(encodeImage(img))
     sendVideo()
     send(DISCONNECT_MESSAGE)
