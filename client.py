@@ -20,7 +20,7 @@ except socket.error as err:
 
 try:
     client.connect(ADDR)
-except:
+except ConnectionRefusedError:
     print('Error connecting to server!')
     sys.exit()
 
@@ -37,7 +37,7 @@ while connected:
             if msg.decode(FORMAT) == '!DISCONNECT':
                 connected = False
                 print('[DISCONNECTED]')
-        except:
+        except UnicodeDecodeError:
             print('Packet Size:', msgLength, 'Packet Number:', count + 1)
             count += 1
             images_arr.append(msg)
@@ -50,7 +50,7 @@ img = np.frombuffer(img, np.uint8)
 img = cv2.imdecode(img, 3)
 height, width, layers = img.shape
 size = (width,height)
-out = out = cv2.VideoWriter('project.avi',cv2.VideoWriter_fourcc(*'DIVX'), 30, size)
+out = out = cv2.VideoWriter('project.avi',cv2.VideoWriter_fourcc(*'DIVX'), 24, size)
 
 for i in range(len(images_arr)):
     img = images_arr[i]
